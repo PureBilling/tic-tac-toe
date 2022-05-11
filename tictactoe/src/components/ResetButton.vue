@@ -1,9 +1,14 @@
 <template>
-  <div class="restart-button">Restart Game</div>
+  <div class="restart-button"  v-on:click="reset">Restart Game</div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    reset: () => fetch("http://localhost:3000/reset", { method: 'POST' })
+      .then(response => response.json()),
+  }
+};
 </script>
 
 <style scoped>
