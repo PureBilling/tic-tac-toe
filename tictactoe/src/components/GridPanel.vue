@@ -1,16 +1,46 @@
 <template>
   <div class="grid">
-    <div class="cell"><CrossToken /></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+    <div class="cell" v-on:click="makeMovement('A')">
+      <CrossToken v-if="grid['A'] === 'cross'"/>
+      <NoughtToken v-if="grid['A'] === 'circle'"/>
+    </div>
+    <div class="cell" v-on:click="makeMovement('B')">
+      <CrossToken v-if="grid['B'] === 'cross'"/>
+      <NoughtToken v-if="grid['B'] === 'circle'"/>
+    </div>
+    <div class="cell" v-on:click="makeMovement('C')">
+      <CrossToken v-if="grid['C'] === 'cross'"/>
+      <NoughtToken v-if="grid['C'] === 'circle'"/>
+    </div>
 
-    <div class="cell"><NoughtToken /></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
 
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+    <div class="cell" v-on:click="makeMovement('D')">
+      <CrossToken v-if="grid['D'] === 'cross'"/>
+      <NoughtToken v-if="grid['D'] === 'circle'"/>
+    </div>
+    <div class="cell" v-on:click="makeMovement('E')">
+      <CrossToken v-if="grid['E'] === 'cross'"/>
+      <NoughtToken v-if="grid['E'] === 'circle'"/>
+    </div>
+    <div class="cell" v-on:click="makeMovement('F')">
+      <CrossToken v-if="grid['F'] === 'cross'"/>
+      <NoughtToken v-if="grid['F'] === 'circle'"/>
+    </div>
+
+
+    <div class="cell" v-on:click="makeMovement('G')">
+      <CrossToken v-if="grid['G'] === 'cross'"/>
+      <NoughtToken v-if="grid['G'] === 'circle'"/>
+    </div>
+    <div class="cell" v-on:click="makeMovement('H')">
+      <CrossToken v-if="grid['H'] === 'cross'"/>
+      <NoughtToken v-if="grid['H'] === 'circle'"/>
+    </div>
+    <div class="cell" v-on:click="makeMovement('I')">
+      <CrossToken v-if="grid['I'] === 'cross'"/>
+      <NoughtToken v-if="grid['I'] === 'circle'"/>
+    </div>
+
   </div>
 </template>
 
@@ -23,6 +53,19 @@ export default {
     NoughtToken,
     CrossToken,
   },
+  props: ['grid'],
+  methods: {
+    makeMovement(cell) {
+      fetch('http://localhost:3000/movement', { method: 'POST', body: JSON.stringify({ cell }),  headers: { 'Content-Type': 'application/json' } })
+        .then(res => {
+          if (res.ok) {
+            this.$emit('gridChanged');
+          } else {
+            alert(res.statusText);
+          }
+        })
+    }
+  }
 };
 </script>
 

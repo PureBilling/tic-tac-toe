@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Tic Tac Toe</h1>
-    <GridPanel />
-    <ResetButton />
+    <GridPanel @gridChanged="getMovement" :grid="grid"/>
+    <ResetButton @onReset="getMovement" />
   </div>
 </template>
 
@@ -16,6 +16,21 @@ export default {
     GridPanel,
     ResetButton,
   },
+  data () {
+    return {
+      grid: { A: false, B: false, C: false, D: false, E: false, F: false, G: false, H: false, I: false }
+    }
+  },
+  beforeMount() {
+    this.getMovement();
+  },
+  methods: {
+    getMovement() {
+      fetch('http://localhost:3000/movement')
+        .then(res => res.json())
+        .then(res => this.grid = res)
+    }
+  }
 };
 </script>
 

@@ -14,6 +14,10 @@ app.use(
 );
 app.use(bodyParser.json());
 
+const initialGrid = { A: false, B: false, C: false, D: false, E: 'circle', F: false, G: false, H: false, I: false }
+app.set('initialGrid', initialGrid);
+app.set('grid', initialGrid);
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -25,6 +29,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use(require("./movement")(express.Router()));
+app.use(require("./restart")(express.Router()));
 
 // Server Initialisation
 app.listen(3000, () => {
