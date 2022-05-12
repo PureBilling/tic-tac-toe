@@ -51,7 +51,12 @@ import CrossToken from "./CrossToken.vue";
 export default {
   components: {
     NoughtToken,
-    CrossToken,
+    CrossToken
+},
+  data() {
+    return {
+      grid: { A: false, B: false, C: false, D: false, E: false, F: false, G: false, H: false, I: false }
+    }
   },
   props: ['grid'],
   methods: {
