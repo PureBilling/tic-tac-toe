@@ -24,9 +24,9 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use(require("./movement")(express.Router()));
+app.use(require("./router/movement")(express.Router()));
 
 // Server Initialisation
-app.listen(3000, () => {
-  console.log(`Example app listening on port 3000`);
+app.listen(7999, () => {
+  console.log(`Example app listening on port 7999`);
 });
