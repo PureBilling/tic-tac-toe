@@ -15,7 +15,7 @@ In our development workflow we strongly encourage elegant solutions to software 
 
 ## Requirements of the frontend
 
-- The frontend should be a SPA (e.g Vue, React, Angular…). You have available the React and Vue ones in the folders (tictactoe-[react/vue])
+- The frontend should be a SPA (e.g Vue, React, Angular…). React and Vue ones are available in the folders (tictactoe-[react/vue])
 - There is no restriction on the technology/framework/libraries used.
 
 ## Game workflow
