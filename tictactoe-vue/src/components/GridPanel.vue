@@ -1,78 +1,68 @@
+<script setup>
+import NoughtToken from './NoughtToken.vue'
+import CrossToken from './CrossToken.vue'
+import { getMovement } from './../services/api'
+import { ref } from 'vue'
+
+const initialPos = ref(4)
+const cells = ref(new Array(9))
+
+/**
+ * Initial computer move
+ */
+const setInitialDisposition = () => {
+  move(1, initialPos.value)
+}
+
+/**
+ * 0 = Cross (User), 1 = Nought (Machine)
+ */
+const move = (user, position) => {
+  position ??= initialPos.value
+  cells.value[position] ?? cells.value.splice(position, 1, user)
+}
+
+/**
+ * Permforms user's move a triggers the next turn
+ */
+const play = async (position) => {
+  move(0, position)
+  getStatus() || (await getComputerPosition())
+}
+
+/**
+ * Get computer's next move
+ */
+const getComputerPosition = async () => {
+  const movement = await getMovement(cells.value)
+  move(1, movement)
+  getStatus()
+}
+
+/**
+ * Checks the game status (is there a winner?)
+ */
+const getStatus = () => {
+  // TODO: Implement this
+}
+
+setInitialDisposition()
+</script>
+
 <template>
   <div class="grid">
-    <div
-      class="cell"
-      :key="position"
-      v-for="(value, position) in cells"
-      @click="play(position)"
-    >
+    <div class="cell" :key="position" v-for="(value, position) in cells" @click="play(position)">
       <div v-if="value === 0"><CrossToken /></div>
       <div v-if="value === 1"><NoughtToken /></div>
     </div>
   </div>
 </template>
 
-<script>
-import NoughtToken from "./NoughtToken.vue";
-import CrossToken from "./CrossToken.vue";
-import { getMovement } from "./../services/api";
-
-export default {
-  components: {
-    NoughtToken,
-    CrossToken,
-  },
-  data() {
-    return {
-      initialPos: 4,
-      cells: new Array(9),
-    };
-  },
-  created() {
-    this.setInitialDisposition();
-  },
-  methods: {
-    /**
-     * Initial computer move
-     */
-    setInitialDisposition() {
-      this.move(1, this.initialPos);
-    },
-    /**
-     * 0 = Cross (User), 1 = Nought (Machine)
-     */
-    move(user, position) {
-      position ??= this.initialPos;
-      this.cells[position] ?? this.cells.splice(position, 1, user);
-    },
-    /**
-     * Permforms user's move a triggers the next turn
-     */
-    async play(position) {
-      this.move(0, position);
-      this.getStatus() || (await this.getComputerPosition());
-    },
-    /**
-     * Get computer's next move
-     */
-    async getComputerPosition() {
-      const move = await getMovement(this.cells);
-      this.move(1, move);
-      this.getStatus();
-    },
-    /**
-     * Checks the game status (is there a winner?)
-     */
-    getStatus() {},
-  },
-};
-</script>
-
 <style scoped>
 .grid {
   display: grid;
-  grid-template-columns: 200px 200px 200px;
-  grid-template-rows: 200px 200px 200px;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
   border: solid 5px #0ca192;
 }
 
@@ -82,7 +72,7 @@ export default {
   align-items: center;
   justify-content: center;
   border: solid 5px #0ca192;
-  width: 190px;
-  height: 190px;
+  width: 90px;
+  height: 90px;
 }
 </style>

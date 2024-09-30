@@ -1,3 +1,8 @@
+<script setup>
+import GridPanel from './components/GridPanel.vue'
+import ResetButton from './components/ResetButton.vue'
+</script>
+
 <template>
   <div>
     <h1>Tic Tac Toe</h1>
@@ -5,19 +10,6 @@
     <ResetButton />
   </div>
 </template>
-
-<script>
-import GridPanel from "./components/GridPanel.vue";
-import ResetButton from "./components/ResetButton.vue";
-
-export default {
-  name: "App",
-  components: {
-    GridPanel,
-    ResetButton,
-  },
-};
-</script>
 
 <style>
 body {

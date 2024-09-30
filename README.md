@@ -52,5 +52,5 @@ React/Vue
 ```
 cd [tictactoe-react|tictactoe-vue]
 npm install
-npm run start
+npm run dev
 ```

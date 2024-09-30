@@ -2,10 +2,6 @@
   <div class="restart-button">Restart Game</div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 .restart-button {
   position: absolute;

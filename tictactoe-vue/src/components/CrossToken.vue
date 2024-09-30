@@ -10,33 +10,21 @@
       <path
         class="hFJ9Ve"
         d="M16,16L112,112"
-        style="
-          stroke: rgb(84, 84, 84);
-          stroke-dasharray: 135.764;
-          stroke-dashoffset: 0;
-        "
+        style="stroke: rgb(84, 84, 84); stroke-dasharray: 135.764; stroke-dashoffset: 0"
       ></path>
       <path
         class="hFJ9Ve"
         d="M112,16L16,112"
-        style="
-          stroke: rgb(84, 84, 84);
-          stroke-dasharray: 135.764;
-          stroke-dashoffset: 0;
-        "
+        style="stroke: rgb(84, 84, 84); stroke-dasharray: 135.764; stroke-dashoffset: 0"
       ></path>
     </svg>
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 svg {
-  height: 150px;
-  width: 150px;
+  height: 75px;
+  width: 75px;
 }
 svg path {
   stroke-width: 16px;
