@@ -25,7 +25,7 @@ In our development workflow we strongly encourage elegant solutions to software 
 - After each user movement, the machine will perform a movement getting the next position from the API. 
 - The game cells must be someway identified.
 
-## Requirements of the API
+## Requirements of the API
 
 - The API should be developed in ExpressJS. 
 - It must have the endpoint "/movement", which should return the next movement of the machine player. On the request (by POST) you should send the current status of the game. The API should return the best movement possible for the given status.
